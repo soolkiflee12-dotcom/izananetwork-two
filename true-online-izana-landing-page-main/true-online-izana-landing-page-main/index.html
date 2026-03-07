@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="th" class="font-sans ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ตั้ง font ทั้งโปรเจคผ่าน font-sans -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              // ทั้งเว็บจะใช้ BetterTogether เป็นหลัก
+              sans: [
+                "BetterTogether",
+                "MyriadPro",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Noto Sans Thai",
+                "sans-serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* BetterTogether (TTF) */
+      @font-face {
+        font-family: "BetterTogether";
+        src: url("fonts/BetterTogether-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "BetterTogether";
+        src: url("fonts/BetterTogether-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "BetterTogether";
+        src: url("fonts/BetterTogether-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* MyriadPro (OTF) */
+      @font-face {
+        font-family: "MyriadPro";
+        src: url("fonts/MyriadPro-Regular.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <title>Izana Netwok</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png" />
+  </head>
+
+  <!-- ใส่ font-sans แค่นี้ ทั้งเว็บจะใช้ฟอนต์ที่ตั้งไว้ -->
+  <body
+    class="pt-14 bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300"
+  >
+    <div id="site-header"></div>
+
+    <div
+      class="relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-950 dark:via-gray-950 dark:to-gray-950 pt-10"
+    >
+      <div
+        class="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl dark:bg-blue-400/10"
+      ></div>
+      <div
+        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl dark:bg-purple-400/10"
+      ></div>
+
+      <!-- ===== HERO SLIDER ===== -->
+      <div class="max-w-6xl mx-auto mt-2 mb-8">
+        <div
+          id="heroSlider"
+          class="relative overflow-hidden rounded-3xl border border-gray-200/70 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 shadow-sm"
+          data-interval="2000"
+        >
+          <!-- track -->
+          <div
+            id="heroSliderTrack"
+            class="flex transition-transform duration-500 ease-out"
+          >
+            <!-- Slide 1 -->
+            <div class="min-w-full h-[220px] sm:h-[320px] md:h-[380px] bg-black/5 overflow-hidden">
+              <img
+                src="images/banner_package.png"
+                alt="slide 1"
+                class="w-full h-full object-contain object-center"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="min-w-full h-[220px] sm:h-[320px] md:h-[380px] bg-black/5 overflow-hidden">
+              <img
+                src="images/image2.JPG"
+                alt="slide 1"
+                class="w-full h-full object-contain object-center"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="min-w-full h-[220px] sm:h-[320px] md:h-[380px] bg-black/5 overflow-hidden">
+              <img
+                src="images/image3.JPG"
+                alt="slide 1"
+                class="w-full h-full object-contain object-center"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- Prev/Next
+          <button
+            type="button"
+            data-prev
+            aria-label="Previous slide"
+            class="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full
+                  bg-white/80 dark:bg-gray-900/70 border border-gray-200/70 dark:border-gray-800
+                  shadow-sm hover:shadow transition flex items-center justify-center"
+          >
+            ‹
+          </button>
+
+          <button
+            type="button"
+            data-next
+            aria-label="Next slide"
+            class="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full
+                  bg-white/80 dark:bg-gray-900/70 border border-gray-200/70 dark:border-gray-800
+                  shadow-sm hover:shadow transition flex items-center justify-center"
+          >
+            ›
+          </button> -->
+
+          <!-- Dots -->
+          <div
+            class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2
+                  px-3 py-1.5 rounded-full bg-white/70 dark:bg-gray-950/50 backdrop-blur border border-gray-200/60 dark:border-gray-800"
+            data-dots
+            aria-label="Slider dots"
+          ></div>
+        </div>
+      </div>
+      <!-- ===== /HERO SLIDER ===== -->
+
+      <section class="max-w-7xl mx-auto lg:px-8 pb-12">
+        <div class="text-center">
+          <h1
+            class="mt-6 text-3xl md:text-5xl font-extrabold tracking-tight text-blue-500"
+          >
+            Izana Netwok
+          </h1>
+
+          <h1
+            class="mt-6 text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+          >
+            
+          </h1>
+
+          <p
+            class="mt-6 max-w-3xl mx-auto leading-relaxed text-gray-600 dark:text-gray-300"
+          >
+            Izana Netwok
+            <strong class="font-semibold text-gray-900 dark:text-blue-300"
+              >เป็นตัวแทนจำหน่ายเน็ตบ้านทรูอย่างถูกต้องและเป็นทางการ ในนามบุคคลธรรมดา นาย ซูลกิฟลี สาฮะ</strong
+            >
+            สัมผัสประสบการณ์การเชื่อมต่อเหนือระดับด้วยบริการอินเทอร์เน็ตไฟเบอร์ออปติกจาก True ผ่านการดูแลของ
+            Izana Netwok เรามุ่งมั่นส่งมอบบริการที่เปี่ยมด้วยคุณภาพและเสถียรภาพ
+            <strong class="font-semibold text-gray-900 dark:text-blue-300"
+              >พร้อมทีมงานมืออาชีพที่คอยให้คำแนะนำในการเลือกแพ็กเกจที่คุ้มค่า และเหมาะสมกับความต้องการของคุณที่สุด</strong
+            >
+            เพื่อให้ทุกการสื่อสารออนไลน์ของคุณรวดเร็วและราบรื่นไร้ข้อจำกัด
+          </p>
+          <!-- ปุ่มสมัครบริการ -->
+          <div class="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <a
+              class="px-6 py-3 md:px-8 rounded-full text-white font-semibold
+                     bg-gradient-to-r from-blue-500 to-purple-500
+                     shadow-sm hover:shadow-lg
+                     transition-transform duration-200
+                     hover:scale-[1.02] active:scale-[0.98]
+                     motion-reduce:transition-none motion-reduce:transform-none"
+                     href="https://lin.ee/dW39tFw"
+            >
+              สมัครใช้บริการ
+          </a>
+            
+
+            <a
+              class="px-6 py-3 md:px-8 rounded-full font-semibold
+                     text-gray-900 dark:text-white
+                     bg-white/90 dark:bg-gray-900/60
+                     border border-gray-200 dark:border-gray-800
+                     hover:bg-gray-50 dark:hover:bg-gray-900
+                     shadow-sm hover:shadow-lg
+                     transition-transform duration-200
+                     hover:scale-[1.02] active:scale-[0.98]
+                     motion-reduce:transition-none motion-reduce:transform-none"
+                     href="https://lin.ee/dW39tFw"
+            >
+              ตรวจสอบพื้นที่
+        </a>
+          </div>
+
+          <div
+            class="mt-10 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-3"
+          >
+            <div
+              class="rounded-2xl border border-gray-200/70 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 p-4 shadow-sm"
+            >
+              <p class="text-sm text-gray-500 dark:text-gray-400">ติดตั้งเร็ว</p>
+              <p class="text-lg font-bold">สะดวก · รวดเร็ว</p>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200/70 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 p-4 shadow-sm"
+            >
+              <p class="text-sm text-gray-500 dark:text-gray-400">ทีมงาน</p>
+              <p class="text-lg font-bold">แนะนำแพ็กเกจให้เหมาะ</p>
+            </div>
+            <div
+              class="rounded-2xl border border-gray-200/70 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 p-4 shadow-sm"
+            >
+              <p class="text-sm text-gray-500 dark:text-gray-400">บริการ</p>
+              <p class="text-lg font-bold">ถูกต้อง · เป็นทางการ</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <div class="flex items-end justify-between gap-4">
+          <h2 class="text-2xl md:text-3xl font-bold">
+            แพ็กเกจยอดนิยม 
+          </h2>
+          <div class="hidden md:flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+            <span class="h-2 w-2 rounded-full bg-green-500"></span>
+            อัปเดตล่าสุด
+          </div>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   shadow-sm hover:shadow-xl transition
+                   overflow-hidden
+                   transform-gpu hover:-translate-y-1
+                   motion-reduce:transform-none"
+          >
+            <img
+              src="images/image1.JPG"
+              class="w-full aspect-[4/3] object-cover"
+              alt="package"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="p-5">
+              <h3 class="text-xl font-bold">เน็ตบ้านมาตรฐาน</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-2">
+                อินเทอร์เน็ต Fiber คุ้มค่า สัญญา 24 เดือนเท่านั้น สมัครเลยวันนี้ คลิก!
+              </p>
+              <!-- อยากเปิดแถบใหม่ เอา 2 comment ไปไว้ล่าง href -->
+                <!-- target="_blank" -->
+                <!-- rel="noopener noreferrer" -->
+              <a
+                href="https://lin.ee/dW39tFw"
+                class="mt-6 w-full inline-flex items-center justify-center px-6 py-3 md:px-8 rounded-full text-white font-semibold
+                      bg-gradient-to-r from-blue-500 to-purple-500
+                      shadow-sm group-hover:shadow-lg
+                      transition-transform duration-200
+                      hover:scale-[1.01] active:scale-[0.98]
+                      motion-reduce:transition-none motion-reduce:transform-none"
+              >
+                สมัครใช้บริการ
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   shadow-sm hover:shadow-xl transition
+                   overflow-hidden
+                   transform-gpu hover:-translate-y-1
+                   motion-reduce:transform-none"
+          >
+            <img
+              src="images/image2.JPG"
+              class="w-full aspect-[4/3] object-cover"
+              alt="package"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="p-5">
+              <h3 class="text-xl font-bold">เน็ตบ้านพร้อมประกันบ้าน</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-2">
+                สิทธิพิเศษ! ฟรี! ประกันอัคคีภัยจากทิพยประกันภัย วงเงินคุ้มครองสูงสุด 450,000 บาท
+              </p>
+
+              <a
+                href="https://lin.ee/dW39tFw"
+                class="mt-6 w-full inline-flex items-center justify-center px-6 py-3 md:px-8 rounded-full text-white font-semibold
+                       bg-gradient-to-r from-blue-500 to-purple-500
+                       shadow-sm group-hover:shadow-lg
+                       transition-transform duration-200
+                       hover:scale-[1.01] active:scale-[0.98]
+                       motion-reduce:transition-none motion-reduce:transform-none"
+              >
+                สมัครใช้บริการ
+            </a>
+            </div>
+          </div>
+
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   shadow-sm hover:shadow-xl transition
+                   overflow-hidden
+                   transform-gpu hover:-translate-y-1
+                   motion-reduce:transform-none"
+          >
+            <img
+              src="images/image3.JPG"
+              class="w-full aspect-[4/3] object-cover"
+              alt="package"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="p-5">
+              <h3 class="text-xl font-bold">เน็ตบ้านพร้อมกล่องทีวี</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-2">
+                สมัครเน็ตบ้านทรูออนไลน์ รับกล่อง TrueID TV Gen3 พร้อมสิทธิพิเศษ
+              </p>
+
+              <a
+                href="https://lin.ee/dW39tFw"
+                class="mt-6 w-full inline-flex items-center justify-center px-6 py-3 md:px-8 rounded-full text-white font-semibold
+                       bg-gradient-to-r from-blue-500 to-purple-500
+                       shadow-sm group-hover:shadow-lg
+                       transition-transform duration-200
+                       hover:scale-[1.01] active:scale-[0.98]
+                       motion-reduce:transition-none motion-reduce:transform-none"
+              >
+                สมัครใช้บริการ
+            </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   shadow-sm hover:shadow-xl transition overflow-hidden
+                   transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+          >
+            <div class="grid sm:grid-cols-2">
+              <img
+                src="images/image1.JPG"
+                class="w-full h-full aspect-[4/3] object-cover"
+                alt="package"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-bold">เน็ตบ้านมาตรฐาน</h3>
+                <p class="text-gray-600 dark:text-gray-300 mt-2">
+                  อินเทอร์เน็ต Fibre คุ้มค่า สัญญา 12 เดือนเท่านั้น สมัครเลยวันนี้ คลิก!
+                </p>
+              <a
+                href="https://lin.ee/dW39tFw"
+                class="mt-6 w-full inline-flex items-center justify-center px-6 py-3 md:px-8 rounded-full text-white font-semibold
+                       bg-gradient-to-r from-blue-500 to-purple-500
+                       shadow-sm group-hover:shadow-lg
+                       transition-transform duration-200
+                       hover:scale-[1.01] active:scale-[0.98]
+                       motion-reduce:transition-none motion-reduce:transform-none"
+              >
+                สมัครใช้บริการ
+            </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   shadow-sm hover:shadow-xl transition overflow-hidden
+                   transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+          >
+            <div class="grid sm:grid-cols-2">
+              <img
+                src="images/image2.JPG"
+                class="w-full h-full aspect-[4/3] object-cover"
+                alt="package"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-bold">เน็ตบ้านสุดคุ้ม</h3>
+                <p class="text-gray-600 dark:text-gray-300 mt-2">
+                  อินเทอร์เน็ต Fibre ครบ ทุก ฟังก์ชันการใช้งาน สมัครเลยวันนี้
+                </p>
+                <a
+                href="https://lin.ee/dW39tFw"
+                class="mt-6 w-full inline-flex items-center justify-center px-6 py-3 md:px-8 rounded-full text-white font-semibold
+                       bg-gradient-to-r from-blue-500 to-purple-500
+                       shadow-sm group-hover:shadow-lg
+                       transition-transform duration-200
+                       hover:scale-[1.01] active:scale-[0.98]
+                       motion-reduce:transition-none motion-reduce:transform-none"
+              >
+                สมัครใช้บริการ
+            </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-gray-50 dark:bg-gray-950/40">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <h2 class="text-center text-blue-600 dark:text-blue-300 text-2xl md:text-3xl font-bold">
+          วิธีสมัครเน็ตบ้านทรูออนไลน์
+        </h2>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div
+            class="rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   p-6 shadow-sm hover:shadow-xl transition
+                   transform-gpu hover:-translate-y-1 motion-reduce:transform-none text-center"
+          >
+            <img
+              src="images/image4.JPG"
+              class="mx-auto w-full max-w-xs aspect-square object-contain"
+              alt="step1"
+              loading="lazy"
+              decoding="async"
+            />
+            <h4 class="mt-5 text-lg font-bold">ขั้นตอนที่ 1</h4>
+            <p class="text-gray-600 dark:text-gray-300 mt-1">"แอดไลน์"</p>
+            <p class="text-gray-600 dark:text-gray-300">เพื่อขอรับบริการ...</p>
+          </div>
+
+          <div
+            class="rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   p-6 shadow-sm hover:shadow-xl transition
+                   transform-gpu hover:-translate-y-1 motion-reduce:transform-none text-center"
+          >
+            <img
+              src="images/image5.JPG"
+              class="mx-auto w-full max-w-xs aspect-square object-contain"
+              alt="step2"
+              loading="lazy"
+              decoding="async"
+            />
+            <h4 class="mt-5 text-lg font-bold">ขั้นตอนที่ 2</h4>
+            <p class="text-gray-600 dark:text-gray-300 mt-1">"แจ้งพิกัดที่ติดตั้ง"</p>
+            <p class="text-gray-600 dark:text-gray-300">เพื่อตรวจสอบคู่สายให้บริการ</p>
+          </div>
+
+          <div
+            class="rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                   p-6 shadow-sm hover:shadow-xl transition
+                   transform-gpu hover:-translate-y-1 motion-reduce:transform-none text-center"
+          >
+            <img
+              src="images/image6.PNG"
+              class="mx-auto w-full max-w-xs aspect-square object-contain"
+              alt="step3"
+              loading="lazy"
+              decoding="async"
+            />
+            <h4 class="mt-5 text-lg font-bold">ขั้นตอนที่ 3</h4>
+            <p class="text-gray-600 dark:text-gray-300 mt-1">"สมัครใช้บริการ"</p>
+            <p class="text-gray-600 dark:text-gray-300">
+              เลือกแพ็กเกจที่ต้องการและสมัครใช้บริการ
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <h2 class="text-center text-blue-600 dark:text-blue-300 text-2xl md:text-3xl font-bold">
+          โปรโมชั่นเน็ตบ้านทรูออนไลน์
+        </h2>
+
+        <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                shadow-sm hover:shadow-xl transition overflow-hidden
+                transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+          >
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img
+                src="images/image7.JPG"
+                class="absolute inset-0 h-full w-full object-cover object-center"
+                alt="promo"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="p-4">
+              <h4 class="text-sm font-bold">NOW FOOTBALL</h4>
+              <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                ดูบอล / คอนเทนต์พรีเมียม
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                shadow-sm hover:shadow-xl transition overflow-hidden
+                transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+          >
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img
+                src="images/image8.JPG"
+                class="absolute inset-0 h-full w-full object-cover object-center"
+                alt="promo"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="p-4">
+              <h4 class="text-sm font-bold">Standard</h4>
+              <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                แพ็กเกจมาตรฐานคุ้มค่า
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                shadow-sm hover:shadow-xl transition overflow-hidden
+                transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+          >
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img
+                src="images/image9.JPG"
+                class="absolute inset-0 h-full w-full object-cover object-center"
+                alt="promo"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="p-4">
+              <h4 class="text-sm font-bold">Safety HOME &amp; Wellness</h4>
+              <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                เน้นความปลอดภัยภายในบ้าน
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="group rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                shadow-sm hover:shadow-xl transition overflow-hidden
+                transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+          >
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img
+                src="images/image10.JPG"
+                class="absolute inset-0 h-full w-full object-cover object-center"
+                alt="promo"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="p-4">
+              <h4 class="text-sm font-bold">Fiber to Room</h4>
+              <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                เดินสายถึงห้อง สัญญาณนิ่ง
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 bg-gray-50 dark:bg-gray-950/40">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <div class="text-center">
+          <h2 class="text-blue-600 dark:text-blue-300 text-2xl md:text-3xl font-bold">
+            ตรวจสอบพื้นที่ให้บริการ
+          </h2>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mt-2 pb-10">
+            สะดวก · รวดเร็ว · ทราบผลทันที
+          </p>
+        </div>
+
+        <div
+          class="relative h-[450px] w-full md:w-2/3 mx-auto rounded-2xl bg-white/90 dark:bg-gray-900/40
+                border border-gray-200/70 dark:border-gray-800 shadow-sm hover:shadow-xl
+                transition transform-gpu hover:-translate-y-1 motion-reduce:transform-none overflow-hidden"
+        >
+          <a
+            href="https://lin.ee/dW39tFw"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block h-full w-full"
+          >
+            <img
+              src="images/checkArea.jpg"
+              class="h-full w-full object-cover object-center"
+              alt="promo"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </div>
+
+        <div class="mt-12">
+          <h3 class="text-blue-600 dark:text-blue-300 text-lg md:text-2xl font-bold">
+            อุปกรณ์
+          </h3>
+
+          <div class="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div
+              class="rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                     p-4 shadow-sm hover:shadow-xl transition
+                     transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+            >
+              <img
+                src="images/product1.PNG"
+                class="w-full aspect-[4/3] object-contain"
+                alt="device"
+                loading="lazy"
+                decoding="async"
+              />
+              <h4 class="mt-4 text-sm font-bold">TrueOnline Dongle</h4>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                อุปกรณ์เสริมที่เชื่อมต่อผ่านพอร์ต USB เข้ากับเราเตอร์รุ่นพิเศษของทรู เพื่อทำหน้าที่เป็นระบบสำรองการเชื่อมต่อ
+              </p>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                     p-4 shadow-sm hover:shadow-xl transition
+                     transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+            >
+              <img
+                src="images/product2.PNG"
+                class="w-full aspect-[4/3] object-contain"
+                alt="device"
+                loading="lazy"
+                decoding="async"
+              />
+              <h4 class="mt-4 text-sm font-bold">Mesh WiFi (True GIGATEX Mesh WiFi)</h4>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                ช่วยขยายสัญญาณ Wi-Fi ให้ครอบคลุมทั้งบ้าน ลดจุดอับสัญญาณ ใช้งานต่อเนื่องไม่มีสะดุด
+              </p>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                     p-4 shadow-sm hover:shadow-xl transition
+                     transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+            >
+              <img
+                src="images/product3.PNG"
+                class="w-full aspect-[4/3] object-contain"
+                alt="device"
+                loading="lazy"
+                decoding="async"
+              />
+              <h4 class="mt-4 text-sm font-bold">TrueID TV Box</h4>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                เปลี่ยนทีวีธรรมดาให้เป็นสมาร์ททีวี รับชมคอนเทนต์พรีเมียมจาก TrueVisions NOW, Viu Premium, iQIYI VIP และอื่นๆ
+              </p>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/90 dark:bg-gray-900/40 border border-gray-200/70 dark:border-gray-800
+                     p-4 shadow-sm hover:shadow-xl transition
+                     transform-gpu hover:-translate-y-1 motion-reduce:transform-none"
+            >
+              <img
+                src="images/product4.PNG"
+                class="w-full aspect-[4/3] object-contain"
+                alt="device"
+                loading="lazy"
+                decoding="async"
+              />
+              <h4 class="mt-4 text-sm font-bold">Smart Wireless CCTV Camera</h4>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                เพิ่มความปลอดภัยภายในบ้าน อาจได้รับกล้อง CCTV พร้อมบริการ Cloud Service สำหรับเก็บข้อมูล
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <img
+            src="images/banner.PNG"
+            class="w-full rounded-2xl shadow-sm border border-gray-200/70 dark:border-gray-800"
+            alt="banner"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <div id="site-components" class="mt-8"></div>
+    <div id="cookie-consent-mount"></div>
+
+    <script src="/site.js"></script>
+    <script src="/cookie-consent.js"></script>
+
+    <script>
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const targets = document.querySelectorAll(
+        "section, header, .group, #site-components, img"
+      );
+
+      if (!reduceMotion) {
+        targets.forEach((el) => {
+          el.classList.add("opacity-0", "translate-y-3", "transform-gpu");
+          el.classList.add("transition", "duration-700", "ease-out");
+        });
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.remove("opacity-0", "translate-y-3");
+                e.target.classList.add("opacity-100", "translate-y-0");
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        targets.forEach((el) => io.observe(el));
+      }
+
+      fetch("/components.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-components").innerHTML = html;
+        });
+    </script>
+    <script>
+    (function () {
+      const root = document.getElementById("heroSlider");
+      const track = document.getElementById("heroSliderTrack");
+      if (!root || !track) return;
+
+      const TRANS_MS = 500;
+      const intervalMs = Number(root.getAttribute("data-interval")) || 2000;
+
+      const btnPrev = root.querySelector("[data-prev]"); // ปุ่มซ้าย (ย้อนกลับ)
+      const btnNext = root.querySelector("[data-next]"); // ปุ่มขวา (ถัดไป)
+      const dotsWrap = root.querySelector("[data-dots]");
+
+      // ===== เตรียมสไลด์จริง =====
+      const realSlides = Array.from(track.children);
+      const n = realSlides.length;
+      if (n <= 1) return;
+
+      // Clone หัว/ท้าย เพื่อทำ infinite loop แบบเนียน
+      const firstClone = realSlides[0].cloneNode(true);
+      const lastClone = realSlides[n - 1].cloneNode(true);
+
+      track.insertBefore(lastClone, realSlides[0]); // ใส่ clone ท้ายไว้หน้าสุด
+      track.appendChild(firstClone);                // ใส่ clone หัวไว้ท้ายสุด
+
+      // ตอนนี้ track มี: [cloneLast, s1, s2, ..., sn, cloneFirst]
+      let index = 1; // เริ่มที่ s1 (ตัวจริง)
+      let timer = null;
+      let isAnimating = false;
+
+      // ตั้ง transition
+      track.style.transition = `transform ${TRANS_MS}ms ease-out`;
+      track.style.transform = `translateX(${-index * 100}%)`;
+
+      // ===== dots (อ้างอิงสไลด์จริง n รูป) =====
+      const dots = [];
+      if (dotsWrap) {
+        dotsWrap.innerHTML = "";
+        for (let i = 0; i < n; i++) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className =
+            "h-2.5 w-2.5 rounded-full transition " +
+            (i === 0 ? "bg-blue-600" : "bg-gray-300 dark:bg-gray-700");
+          b.setAttribute("aria-label", "Go to slide " + (i + 1));
+          b.addEventListener("click", () => goToReal(i, true));
+          dotsWrap.appendChild(b);
+          dots.push(b);
+        }
+      }
+
+      function realIndex() {
+        // map index (รวม clone) -> 0..n-1
+        return (index - 1 + n) % n;
+      }
+
+      function updateDots() {
+        if (!dots.length) return;
+        const r = realIndex();
+        dots.forEach((d, i) => {
+          d.className =
+            "h-2.5 w-2.5 rounded-full transition " +
+            (i === r ? "bg-blue-600" : "bg-gray-300 dark:bg-gray-700");
+        });
+      }
+
+      function setTransform() {
+        track.style.transform = `translateX(${-index * 100}%)`;
+        updateDots();
+      }
+
+      function move(withRestart = false) {
+        if (isAnimating) return;
+        isAnimating = true;
+        setTransform();
+        if (withRestart) restart();
+      }
+
+      // ===== สำคัญ: "ถัดไป" = เลื่อนไปขวาเสมอ =====
+      // การเลื่อนไปขวา = transform น้อยลง (เช่น -200% -> -100%) ดังนั้น index ต้อง "ลด"
+      function next(alwaysRight = false) {
+        index -= 1; // ✅ ลด index เพื่อให้เลื่อนไปทางขวา
+        move(alwaysRight);
+      }
+
+      // ย้อนกลับ (เลื่อนไปซ้าย)
+      function prev(userAction = false) {
+        index += 1;
+        move(userAction);
+      }
+
+      // ไปสไลด์จริงตาม dot
+      function goToReal(i, userAction = false) {
+        index = i + 1; // เพราะ index=1 คือสไลด์จริงตัวที่ 1
+        move(userAction);
+      }
+
+      // ===== วนลูปแบบเนียนหลังจบ transition =====
+      track.addEventListener("transitionend", () => {
+        isAnimating = false;
+
+        // ถ้าเลื่อนไปขวาจนถึง cloneLast (index=0) -> กระโดดไป sn (ตัวจริง) แบบไม่เห็นเด้ง
+        if (index === 0) {
+          track.style.transition = "none";
+          index = n; // sn (ตัวจริง)
+          setTransform();
+          // force reflow แล้วคืน transition
+          track.offsetHeight;
+          track.style.transition = `transform ${TRANS_MS}ms ease-out`;
+        }
+
+        // ถ้าเลื่อนไปซ้ายจนถึง cloneFirst (index = n+1) -> กระโดดกลับไป s1
+        if (index === n + 1) {
+          track.style.transition = "none";
+          index = 1; // s1 (ตัวจริง)
+          setTransform();
+          track.offsetHeight;
+          track.style.transition = `transform ${TRANS_MS}ms ease-out`;
+        }
+      });
+
+      // ===== autoplay =====
+      function start() {
+        stop();
+        timer = setInterval(() => next(false), intervalMs);
+      }
+      function stop() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+      function restart() {
+        stop();
+        start();
+      }
+
+      // ปุ่ม
+      btnNext?.addEventListener("click", () => next(true)); // ✅ ไปขวาเสมอ
+      btnPrev?.addEventListener("click", () => prev(true));
+
+      // pause on hover
+      root.addEventListener("mouseenter", stop);
+      root.addEventListener("mouseleave", start);
+
+      // ===== swipe (mobile) =====
+      let isDown = false;
+      let startX = 0;
+      let deltaX = 0;
+
+      root.addEventListener("pointerdown", (e) => {
+        isDown = true;
+        startX = e.clientX;
+        deltaX = 0;
+        root.setPointerCapture?.(e.pointerId);
+        stop();
+      });
+
+      root.addEventListener("pointermove", (e) => {
+        if (!isDown) return;
+        deltaX = e.clientX - startX;
+      });
+
+      root.addEventListener("pointerup", () => {
+        if (!isDown) return;
+        isDown = false;
+
+        // ลากไปขวา (deltaX>0) = ไปสไลด์ก่อนหน้า (เลื่อนไปซ้าย)
+        if (deltaX > 60) prev(true);
+        // ลากไปซ้าย (deltaX<0) = next (เลื่อนไปขวาเสมอ)
+        else if (deltaX < -60) next(true);
+        else start();
+      });
+
+      root.addEventListener("pointercancel", () => {
+        isDown = false;
+        start();
+      });
+
+      // init
+      updateDots();
+      start();
+    })();
+    </script>
+  </body>
+</html>
+
