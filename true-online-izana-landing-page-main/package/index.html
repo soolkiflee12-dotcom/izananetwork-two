@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+    <title>Izana Netwok - แพ็กเกต</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/logo.png" />
+  </head>
+  <body class="bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+    <div id="site-header"></div>
+
+    <section class="relative py-20 md:py-40 bg-white dark:bg-gray-950">
+      <div class="pointer-events-none absolute inset-0 opacity-[0.06] dark:opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.6)_1px,transparent_0)] [background-size:22px_22px]"></div>
+      <div class="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl dark:bg-blue-400/10"></div>
+      <div class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl dark:bg-purple-400/10"></div>
+        <!-- <div class="mt-10">
+          <img
+            src="../images/banner_package.png"
+            class="w-full rounded-2xl shadow-sm border border-gray-200/70 dark:border-gray-800"
+            alt="banner_package"
+            loading="lazy"
+            decoding="async"
+          />
+        </div> -->
+     
+    </section>
+
+    <div id="site-components" class="mt-8"></div>
+    <div id="cookie-consent-mount"></div>
+    <script src="../site.js"></script>
+    <script src="./cookie-consent.js"></script>    
+    <script>
+
+    </script>
+  </body>
+</html>
